@@ -1,0 +1,10 @@
+---
+- name: "install webapp v5"
+  become: yes
+  hosts: prod
+  tags: webapp_v5
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  vars_files:
+    - files/secrets/credentials.yaml
+...

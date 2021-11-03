@@ -1,0 +1,19 @@
+---
+- name: "Clean Folder"
+  file:
+    path: "/home/{{ ansible_user }}/webapp"
+    state: absent
+- name: Create webapp directory
+  file:
+    path: "/home/{{ ansible_user }}/webapp/"
+    state: directory
+- name: "Install git"
+  yum:
+    name: git
+    state: present
+    update_cache: yes
+- name: "git clone to nginx folder"
+  git:
+    repo: https://github.com/diranetafen/static-website-example.git
+    dest: /home/{{ ansible_user }}/webapp/
+...
